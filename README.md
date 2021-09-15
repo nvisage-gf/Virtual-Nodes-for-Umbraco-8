@@ -15,7 +15,7 @@ Where docTypeName is the document type alias to be treated as a "virtual" node.
 You can define multiple "rules" by separating them with commas, e.g.
 
 ```xml
-<add key="virtualnode" value="docTypeName,anotherDocType"/>
+<add key="VirtualNodes" value="docTypeName,anotherDocType"/>
 ```
 
 You can also use wildcards at the start and/or the end of the document type alias, like this:
