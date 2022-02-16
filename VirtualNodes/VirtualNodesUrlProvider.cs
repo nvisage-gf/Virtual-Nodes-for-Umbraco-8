@@ -73,7 +73,7 @@ namespace VirtualNodes
             var urlText = url == null ? "" : url.Text;
 
             // If we come from an absolute URL, strip the host part and keep it so that we can append
-            // it again when returing the URL. 
+            // it again when returning the URL.
             var hostPart = "";
 
             if (urlText.StartsWith("http"))
@@ -96,7 +96,14 @@ namespace VirtualNodes
             }
 
             // Now split the url. We should have as many elements as those in pathIds.
+            // - Unless the top-level node provided a folder-style hostname
             string[] urlParts = urlText.Split('/').Reverse().ToArray();
+            var hasHostnameFolder = urlParts.Length > pathIds.Length;
+            if (hasHostnameFolder)
+            {
+                //recalc the pathIds
+                pathIds = path.Split(',').Skip(pathItemsToSkip-1).Reverse().ToArray();
+            }
 
             // Iterate the url parts. Check the corresponding path id and if the document that corresponds there
             // is of a type that must be excluded from the path, just make that url part an empty string.
