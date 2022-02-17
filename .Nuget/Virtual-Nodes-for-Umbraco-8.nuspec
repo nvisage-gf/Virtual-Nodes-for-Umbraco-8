@@ -2,20 +2,20 @@
 <package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Virtual-Nodes-for-Umbraco-8</id>
-    <version>8.1.1.0-alpha</version>
+    <version>8.1.1.1-alpha.1</version>
     <title>Virtual-Nodes-for-Umbraco-8</title>
     <authors>https://github.com/christopherrobinson/</authors>
     <owners>https://github.com/christopherrobinson/Virtual-Nodes-for-Umbraco-8/</owners>
-    <description>A rewrite of [Umbraco-VirtualNodes](https://github.com/sotirisf/Umbraco-VirtualNodes/) from [Sotiris Filippidis](https://github.com/sotirisf/) to make it compatible with Umbraco 8.1+.</description>
+    <description>A rewrite of Umbraco-VirtualNodes from Sotiris Filippidis to make it compatible with Umbraco 8.1+.</description>
     <summary>This plugin lets you define document types that will be excluded from generated URLs., thus making them "invisible".</summary>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <language>en-GB</language>
-    <tags>Umbraco 8 Virtual Node Invisible Hidden</tags>
+    <tags>Umbraco 8 Virtual Node URL ContentFinder</tags> 
     <projectUrl>https://github.com/nvisage-gf/Virtual-Nodes-for-Umbraco-8</projectUrl>
     <dependencies>
       <group targetFramework=".NETFramework4.7.2">
-        <dependency id="Umbraco.Cms.Core" version="[8.1,9)" />
-        <dependency id="Umbraco.Cms.Web" version="[8.1,9)" />
+        <dependency id="UmbracoCms.Core" version="[8.1,9)" />
+        <dependency id="UmbracoCms.Web" version="[8.1,9)" />
       </group>
     </dependencies>
   </metadata>
