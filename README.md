@@ -4,6 +4,12 @@ Basically a rewrite of [Umbraco-VirtualNodes](https://github.com/sotirisf/Umbrac
 
 This plugin lets you define document types that will be excluded from generated URLs., thus making them "invisible".
 
+[myget](https://www.myget.org/F/nvisage-ltd/api/v3/index.json)
+
+## Change Log
+
+- 8.1.1.0-alpha: enable runtime cache,
+
 ## Usage
 After you include this plugin you must have to add a single `appSettings` entry to your `web.config` file, e.g.
 
@@ -67,3 +73,7 @@ articles
 ## Known issues
 
 To keep things simple the auto numbering of nodes only go one level up - if you have multiple virtual nodes under each other and multiple nodes with the same name in different levels then you will run into problems.
+
+## h5
+
+[Heather Floyd](https://github.com/hfloyd)

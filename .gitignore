@@ -346,3 +346,9 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
+
+.Nuget/nuget.exe
+
+.Nuget/NuGetPack.cmd
+
+.Nuget/NuGetPush-MyGet.cmd

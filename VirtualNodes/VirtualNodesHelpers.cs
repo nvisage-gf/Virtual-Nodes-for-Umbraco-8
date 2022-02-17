@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 using Umbraco.Core.Models.PublishedContent;
 
 namespace VirtualNodes
@@ -9,23 +9,23 @@ namespace VirtualNodes
         /// Checks a given node's name against a potential duplicate name. If the name is the same, followed by a space, a parenthesis and a number, then this is a duplicate name.
         /// </summary>
         /// <param name="potentialDuplicateName">The name to check against</param>
-        /// <param name="currNodeName">The given node's name</param>
+        /// <param name="currentNodeName">The given node's name</param>
         /// <returns>True if the potential duplicate name is same with the current node's name followed by a parenthesis with a number</returns>
-        public static bool MatchDuplicateName(string potentialDuplicateName, string currNodeName)
+        public static bool MatchDuplicateName(string potentialDuplicateName, string currentNodeName)
         {
             var rgName = new Regex(@"^(.+)( \(\d+\))$");
 
-            return (rgName.IsMatch(potentialDuplicateName) && rgName.Replace(potentialDuplicateName, "$1").Equals(currNodeName));
+            return (rgName.IsMatch(potentialDuplicateName) && rgName.Replace(potentialDuplicateName, "$1").Equals(currentNodeName));
         }
 
         /// <summary>
         /// Gets the largest same-name node number being used
         /// </summary>
         /// <param name="potentialDuplicateName">The name to check for duplicates</param>
-        /// <param name="currNodeName">The current node's name</param>
+        /// <param name="currentNodeName">The current node's name</param>
         /// <param name="maxNumber">The current maximum number</param>
         /// <returns>The new maximum number, if applicable, or the same maximum number if nothing has changed</returns>
-        public static int GetMaxNodeNameNumbering(string potentialDuplicateName, string currNodeName, int maxNumber)
+        public static int GetMaxNodeNameNumbering(string potentialDuplicateName, string currentNodeName, int maxNumber)
         {
             var rgName = new Regex(@"^.+ \((\d+)\)$");
 
@@ -60,7 +60,7 @@ namespace VirtualNodes
         }
 
         /// <summary>
-        /// Checks rules from settings agains a given document type alias to see if it matches the rule
+        /// Checks rules from settings against a given document type alias to see if it matches the rule
         /// </summary>
         /// <param name="nodeContentTypeAlias">The given document type alias</param>
         /// <param name="contentTypeAliasFromSettings">The rule from settings</param>
