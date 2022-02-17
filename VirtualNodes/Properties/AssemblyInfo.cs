@@ -29,4 +29,5 @@ using System.Runtime.InteropServices;
 //      Revision
 //
 [assembly: AssemblyVersion("8.1.1.0")]
-[assembly: AssemblyFileVersion("8.1.1-alpha")]
+[assembly: AssemblyFileVersion("8.1.1.0")]
+[assembly: AssemblyInformationalVersion ("8.1.1.1-alpha.1")]
