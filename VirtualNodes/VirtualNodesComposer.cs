@@ -13,6 +13,7 @@ namespace VirtualNodes
             composition.ContentFinders().Insert<VirtualNodesContentFinder>();
 
             composition.UrlProviders().Insert<VirtualNodesUrlProvider>();
+
         }
     }
 }

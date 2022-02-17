@@ -11,26 +11,26 @@ namespace VirtualNodes
 {
     public class VirtualNodesContentFinder : IContentFinder
     {
-        public bool TryFindContent(PublishedRequest contentRequest)
+        public bool TryFindContent(PublishedRequest request)
         {
             var _runtimeCache         = Current.AppCaches.RuntimeCache;
-            var _umbracoContext       = contentRequest.UmbracoContext;
+            var _umbracoContext       = request.UmbracoContext;
             var cachedVirtualNodeUrls = _runtimeCache.GetCacheItem<Dictionary<string, int>>("CachedVirtualNodes");
-            var path                  = contentRequest.Uri.AbsolutePath;
+            var path                  = request.Uri.AbsolutePath;
 
             // If found in the cached dictionary
             if ((cachedVirtualNodeUrls != null) && cachedVirtualNodeUrls.ContainsKey(path))
             {
                 var nodeId = cachedVirtualNodeUrls[path];
 
-                contentRequest.PublishedContent = _umbracoContext.Content.GetById(nodeId);
+                request.PublishedContent = _umbracoContext.Content.GetById(nodeId);
 
                 return true;
             }
 
             // If not found in the cached dictionary, traverse nodes and find the node that corresponds to the URL
             var rootNodes             = _umbracoContext.Content.GetAtRoot();
-            var item                  = rootNodes.DescendantsOrSelf<IPublishedContent>().Where(x => (x.Url == (path + "/") || (x.Url == path))).FirstOrDefault();
+            var item                  = rootNodes.DescendantsOrSelf<IPublishedContent>().FirstOrDefault(x => (x.Url == (path + "/") || (x.Url == path)));
 
             // If item is found, return it after adding it to the cache so we don't have to go through the same process again.
             if (cachedVirtualNodeUrls == null)
@@ -42,10 +42,11 @@ namespace VirtualNodes
             if (item != null)
             {
                 // Update cache
+                cachedVirtualNodeUrls.Add(path, item.Id);
                 _runtimeCache.InsertCacheItem("CachedVirtualNodes", () => cachedVirtualNodeUrls, null, false, CacheItemPriority.High);
 
                 // That's all folks
-                contentRequest.PublishedContent = item;
+                request.PublishedContent = item;
 
                 return true;
             }

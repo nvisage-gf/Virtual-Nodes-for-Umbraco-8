@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -6,7 +6,6 @@ using Umbraco.Core.Configuration;
 using Umbraco.Core.Configuration.UmbracoSettings;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models.PublishedContent;
-using Umbraco.Core.Services;
 using Umbraco.Web;
 using Umbraco.Web.Routing;
 
@@ -51,7 +50,7 @@ namespace VirtualNodes
             string path = content.Path;
 
             // Keep path items in par with path segments in url
-            // If we are hiding the top node from path, then we'll have to skip one path item (the root). 
+            // If we are hiding the top node from path, then we'll have to skip one path item (the root).
             // If we are not, then we'll have to skip two path items (root and home)
             var hideTopNode = ConfigurationManager.AppSettings.Get("Umbraco.Core.HideTopLevelNodeFromPath");
 
@@ -65,8 +64,8 @@ namespace VirtualNodes
             // Get the path ids but skip what's needed in order to have the same number of elements in url and path ids
             var pathIds = path.Split(',').Skip(pathItemsToSkip).Reverse().ToArray();
 
-            // Get the default url 
-            // DO NOT USE THIS - RECURSES: string url = content.Url;
+            // Get the default url
+            // Do not compare url string to content url, causes recursion; DO NOT DO THIS: string url = content.Url
             // https://our.umbraco.org/forum/developers/extending-umbraco/73533-custom-url-provider-stackoverflowerror
             // https://our.umbraco.org/forum/developers/extending-umbraco/66741-iurlprovider-cannot-evaluate-expression-because-the-current-thread-is-in-a-stack-overflow-state
             UrlInfo url = base.GetUrl(umbracoContext, content, mode, culture, current);
@@ -84,7 +83,7 @@ namespace VirtualNodes
                 hostPart = uri.GetLeftPart(UriPartial.Authority);
             }
 
-            // Strip leading and trailing slashes 
+            // Strip leading and trailing slashes
             if (urlText.EndsWith("/"))
             {
                 urlText = urlText.Substring(0, urlText.Length - 1);
@@ -101,7 +100,7 @@ namespace VirtualNodes
             var hasHostnameFolder = urlParts.Length > pathIds.Length;
             if (hasHostnameFolder)
             {
-                //recalc the pathIds
+                //update the pathIds
                 pathIds = path.Split(',').Skip(pathItemsToSkip-1).Reverse().ToArray();
             }
 
@@ -109,7 +108,7 @@ namespace VirtualNodes
             // is of a type that must be excluded from the path, just make that url part an empty string.
             var i = 0;
 
-            foreach (var urlPart in urlParts)
+            foreach (var unused in urlParts)
             {
                 var currentItem = umbracoContext.Content.GetById(int.Parse(pathIds[i]));
 
@@ -122,7 +121,7 @@ namespace VirtualNodes
                 i++;
             }
 
-            // Reconstruct the url, leaving out all parts that we emptied above. This 
+            // Reconstruct the url, leaving out all parts that we emptied above. This
             // will be our final url, without the parts that correspond to excluded nodes.
             string finalUrl = String.Join("/", urlParts.Reverse().Where(x => x != "").ToArray());
 
