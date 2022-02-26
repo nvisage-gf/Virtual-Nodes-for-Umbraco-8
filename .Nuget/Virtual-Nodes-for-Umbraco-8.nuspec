@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>Virtual-Nodes-for-Umbraco-8</id>
+    <version>8.1.2-beta.1</version>
+    <title>Virtual-Nodes-for-Umbraco-8</title>
+    <authors>https://github.com/christopherrobinson/</authors>
+    <owners>https://github.com/christopherrobinson/Virtual-Nodes-for-Umbraco-8/</owners>
+    <description>A rewrite of Umbraco-VirtualNodes from Sotiris Filippidis to make it compatible with Umbraco 8.1+.</description>
+    <summary>This plugin lets you define document types that will be excluded from generated URLs., thus making them "invisible".</summary>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <language>en-GB</language>
+    <tags>Umbraco 8 Virtual Node URL ContentFinder</tags>
+    <projectUrl>https://github.com/nvisage-gf/Virtual-Nodes-for-Umbraco-8</projectUrl>
+    <readme>README.md</readme>
+    <license type="expression">MIT</license>
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="UmbracoCms.Core" version="[8.1,9)" />
+        <dependency id="UmbracoCms.Web" version="[8.1,9)" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\README.md" target="" />
+    <file src="..\VirtualNodes\bin\Debug\VirtualNodes.dll" target="lib\net472" />
+    <file src="..\VirtualNodes\bin\Release\VirtualNodes.pdb" target="lib\net472" />
+    <file src="..\VirtualNodes\**\*.cs" target="src" />
+    <file src="web.config.install.xdt" target="content\web.config.install.xdt" />
+    <file src="web.config.uninstall.xdt" target="content\web.config.uninstall.xdt" />
+  </files>
+</package>
