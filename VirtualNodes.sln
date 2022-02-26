@@ -1,9 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.757
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualNodes", "VirtualNodes\VirtualNodes.csproj", "{3CEEA23B-3ECE-4CFF-B44A-551EDF7D2270}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FD069AC4-886E-42B1-A00F-C557BEDB6D55}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+		.Nuget\Virtual-Nodes-for-Umbraco-8.nuspec = .Nuget\Virtual-Nodes-for-Umbraco-8.nuspec
+		.Nuget\web.config.install.xdt = .Nuget\web.config.install.xdt
+		.Nuget\web.config.uninstall.xdt = .Nuget\web.config.uninstall.xdt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

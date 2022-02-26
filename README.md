@@ -8,7 +8,7 @@ This plugin lets you define document types that will be excluded from generated 
 
 ## Change Log
 
-- 8.1.1.0-alpha: enable runtime cache,
+- 8.1.2-beta.1: VirtualNodesContentFinder update to ensure cached dictionary updated
 
 ## Usage
 After you include this plugin you must have to add a single `appSettings` entry to your `web.config` file, e.g.
@@ -74,6 +74,13 @@ articles
 
 To keep things simple the auto numbering of nodes only go one level up - if you have multiple virtual nodes under each other and multiple nodes with the same name in different levels then you will run into problems.
 
-## h5
+## Nuget Package
 
-[Heather Floyd](https://github.com/hfloyd)
+Update `.Nuget\\Virtual-Nodes-for-Umbraco-8.nuspec` manually for now.
+
+Example pack command:
+
+`
+nuget pack Virtual-Nodes-for-Umbraco-8.nuspec -Build -Version 8.1.2 -Suffix beta.1 -Properties Configuration=Debug
+`
+

@@ -352,3 +352,4 @@ MigrationBackup/
 .Nuget/NuGetPack.cmd
 
 .Nuget/NuGetPush-MyGet.cmd
+*.user
